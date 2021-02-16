@@ -10,6 +10,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.block.Action;
 
+import java.util.Objects;
+
 public final class test extends JavaPlugin implements Listener {
 
     @Override
@@ -28,7 +30,7 @@ public final class test extends JavaPlugin implements Listener {
         Player p = e.getPlayer();
         if (e.getAction() == Action.RIGHT_CLICK_AIR
                 || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if(e.getItem().getType() == Material.TNT) {
+            if(Objects.requireNonNull(e.getItem()).getType() == Material.TNT) {
                 Entity entity =
                         p.getWorld().spawnEntity(p.getEyeLocation(), EntityType.PRIMED_TNT);
                 entity.setVelocity(p.getLocation().getDirection().multiply(2));
