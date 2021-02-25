@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.block.Action;
 
@@ -38,7 +37,7 @@ public final class test extends JavaPlugin implements Listener {
                     }
                     for (Entity entity : entities) {
                         if (entity.getLocation().distance(armorStand.getLocation()) < 1) {
-                            ((org.bukkit.entity.LivingEntity) entity).damage(5);
+                            ((org.bukkit.entity.LivingEntity) entity).damage(7);
                         }
                     }
                 }
@@ -62,7 +61,7 @@ public final class test extends JavaPlugin implements Listener {
                         p.getWorld().spawnEntity(p.getEyeLocation(), EntityType.PRIMED_TNT);
                 entity.setVelocity(p.getLocation().getDirection().multiply(2));
             }
-            else {
+            else if(e.getItem().getType() == Material.DIAMOND_SWORD) {
                 World world = e.getPlayer().getWorld();
                 ArmorStand stand = world.spawn(p.getLocation(), ArmorStand.class);
                 stand.addScoreboardTag(p.getName());
